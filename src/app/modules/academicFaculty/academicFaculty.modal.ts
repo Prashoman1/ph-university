@@ -8,7 +8,6 @@ const academicFacultySchema = new Schema<TAcademicFaculty>({
         trim:true,
         unique:true,
     }
-    
   },
     {
         timestamps:true
