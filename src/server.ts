@@ -3,7 +3,7 @@ import config from './app/config';
 import app from './app';
 
 
-console.log(config.databaseUrl, config.port);
+// console.log(config.databaseUrl, config.port);
 
 async function main() {
   try {
