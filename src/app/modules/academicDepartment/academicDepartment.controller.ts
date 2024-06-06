@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import { AcademicDepartmentService } from "./academicDepartment.service";
+import catchAsnc from "../../utilis/catchAsync";
 
 
-const createAcademicDepartment = async(req: Request, res: Response) => {
-    try {
+const createAcademicDepartment = catchAsnc(async(req: Request, res: Response) => {
         const academicDepartment = await AcademicDepartmentService.postAcadmicDepartment_IntoDB(req.body);
         if(academicDepartment){
             res.status(200).json({
@@ -12,10 +12,7 @@ const createAcademicDepartment = async(req: Request, res: Response) => {
                 data:academicDepartment
             });
         }
-    } catch (error) {
-        res.status(400).send(error);
-    }
-}
+}) 
 
 const getAllAcademicDepartment = async(req: Request, res: Response) => {
     try {
@@ -47,7 +44,7 @@ const getAllAcademicDepartment = async(req: Request, res: Response) => {
         message:'Academic Department fetched successfully',
         data:departments
     });
-    } catch (error) {
+    } catch (error) {                               
         return res.status(400).json({
             success:false,
             message:'Error in fetching Academic Department'
