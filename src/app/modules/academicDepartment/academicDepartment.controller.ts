@@ -47,7 +47,7 @@ const getAllAcademicDepartment = async(req: Request, res: Response) => {
         message:'Academic Department fetched successfully',
         data:departments
     });
-    } catch (error) {
+    } catch (error) {                               
         return res.status(400).json({
             success:false,
             message:'Error in fetching Academic Department'
