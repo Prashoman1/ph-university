@@ -56,9 +56,34 @@ const getAllAcademicDepartment = async(req: Request, res: Response) => {
     
 }
 
+const updateAcademicDepartment = async(req: Request, res: Response) => {
+    try {
+        const departmentId = req.params.departmentId;
+        const department = await AcademicDepartmentService.updateAcademicDepartment_IntoDB(departmentId, req.body);
+        if(!department){
+            return res.status(404).json({
+                success:false,
+                message:'Error in updating Academic Department'
+            });
+        }
+        return res.status(200).json({
+            success:true,
+            message:'Academic Department updated successfully',
+            data:department
+        });
+    } catch (error) {
+        return res.status(400).json({
+            success:false,
+            message:'Error in updating Academic Department'
+        });
+    }
+
+}
+
 
 
 export const AcademicDepartmentController = {
     createAcademicDepartment,
     getAllAcademicDepartment,
+    updateAcademicDepartment
 }

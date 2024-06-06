@@ -19,9 +19,15 @@ const getAcademicDepartmentById_IntoDB = async (paylod:string) =>{
 
 }
 
+const updateAcademicDepartment_IntoDB = async (departmentId:string, payload:TAcademicDepartment) =>{
+    const department = await AcademicDepartment.findByIdAndUpdate(departmentId, payload, {new:true});
+    return department;
+}
+
 
 export const AcademicDepartmentService = {
     postAcadmicDepartment_IntoDB,
     getAllAcademicDepartment_IntoDB,
-    getAcademicDepartmentById_IntoDB
+    getAcademicDepartmentById_IntoDB,
+    updateAcademicDepartment_IntoDB
 }

@@ -12,6 +12,6 @@ route.get('/get-academic-department/:academicDepartmentId?',AcademicDepartmentCo
 
 // route.get('/get-academic-department/:academicDepartmentId?',AcademicDepartmentController.getAcademicDepartmentId);
 
-// route.patch('/update-academic-faculty/:facultyId', validationMiddleware(updateAcademicFacultyVSchema), AcademicFacultyController.updateAcademicFaculty);
+route.patch('/update-academic-department/:departmentId', validationMiddleware(AcademicDepartmentValidation.updateAcademicDepartmentVSchema), AcademicDepartmentController.updateAcademicDepartment);
 
 export const AcademicDepartmentRoute = route;
