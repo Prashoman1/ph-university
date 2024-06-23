@@ -1,21 +1,13 @@
-export type User ={
-    firstName:string;
-    lastName:string;
-} 
+
+export type TRole = 'admin' | 'student' | 'faculty';
 
 
 
 export type UserInformation = {
-    userInfo:User;
-    email:string;
+    id:string;
     password:string;
-    gender:"male" | "female" | "other";
-    dateOfBirth:Date;
-    address:string;
-    phoneNumber:string;
-    role:"admin" | "user";
-    isActive:boolean;
+    needPasswordChange:boolean;
+    role:TRole;
+    status:boolean;
     isDeleted:boolean;
-    createdAt:Date;
-    updatedAt:Date;
 }
