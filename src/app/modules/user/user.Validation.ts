@@ -7,7 +7,7 @@ import { z } from "zod";
 // isDeleted:
 const UserValidationCreate = z.object({
     body:z.object({
-        password: z.string().min(8).max(20),
+        password: z.string().min(8).max(20).optional(),
         needPasswordChange: z.boolean().default(true),
         role: z.enum(['admin', 'student', 'faculty']).default('student'),
         status: z.boolean().default(true),
