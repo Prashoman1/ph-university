@@ -11,6 +11,7 @@ const getStudent = catchAsnc(async (req, res) => {
   sendResponse(res, {
     statusCode: 200,
     success: true,
+    message:"student fetched successfully",
     data: studnetInfo,
   });
 });
@@ -21,6 +22,7 @@ const studentDelete = catchAsnc(async (req, res) => {
     sendResponse(res, {
         statusCode: 200,
         success: true,
+        message: "Student deleted successfully",
         data: deleteStudent,
     });
 });

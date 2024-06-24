@@ -5,8 +5,10 @@ import { AcademicDepartmentController } from "./academicDepartment.controller";
 
 const route = e.Router();
 
+// route.post('/create-academic-department', 
+// validationMiddleware(AcademicDepartmentValidation.createAcademicDepartmentVSchema), AcademicDepartmentController.createAcademicDepartment);
 route.post('/create-academic-department', 
-validationMiddleware(AcademicDepartmentValidation.createAcademicDepartmentVSchema), AcademicDepartmentController.createAcademicDepartment);
+ AcademicDepartmentController.createAcademicDepartment);
 
 route.get('/get-academic-department/:academicDepartmentId?',AcademicDepartmentController.getAllAcademicDepartment);
 
