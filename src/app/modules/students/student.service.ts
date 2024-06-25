@@ -8,7 +8,11 @@ const createStudent = async (payload: TStudent) => {
   return result;
 };
 
-const getStudentIntoDB = async (id: string | null) => {
+const getStudentIntoDB = async (
+  id: string | null,
+  query: Record<string, unknown> | null
+) => {
+  // find by student id
   if (id) {
     const findByIdQuery = await Student.findOne({ id, isDeleted: false })
       .populate("admissionSemester")
@@ -18,7 +22,25 @@ const getStudentIntoDB = async (id: string | null) => {
       });
     return findByIdQuery;
   }
-  const result = await Student.find({ isDeleted: false })
+  // query variables
+  let searchQuery = "";
+  if (query?.searchQuery) {
+    // set query values in variables
+    searchQuery = query.searchQuery as string;
+  }
+
+  // search student fields
+  const searchStudentFields = ["name.firstName", "email", "name.lastName"];
+
+  // find by search query
+  const result = await Student.find(
+    {
+      $or: searchStudentFields?.map((field) => ({
+        [field]: { $regex: searchQuery, $options: "i" },
+      })),
+    },
+    { isDeleted: false }
+  )
     .populate("admissionSemester")
     .populate({
       path: "academicDepartment",

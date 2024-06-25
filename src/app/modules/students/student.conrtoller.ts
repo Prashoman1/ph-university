@@ -7,7 +7,9 @@ const getStudent = catchAsnc(async (req, res) => {
   if (!studentId) {
     studentId = null;
   }
-  const studnetInfo = await StudentService.getStudentIntoDB(studentId);
+  console.log(req.query);
+  
+  const studnetInfo = await StudentService.getStudentIntoDB(studentId,req.query);
   sendResponse(res, {
     statusCode: 200,
     success: true,
